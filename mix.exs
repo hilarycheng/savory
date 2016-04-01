@@ -5,8 +5,8 @@ defmodule Savory.Mixfile do
 
   def project do
     [app: :savory,
-     version: "0.0.2",
-     elixir: "~> 0.15.1",
+     version: "0.0.3",
+     elixir: "~> 1.2",
      deps: deps,
      aliases: aliases,
      description: description,
@@ -44,9 +44,9 @@ defmodule Savory.Mixfile do
   defp package do
     [
       files: ["config", "src", "lib", "mix.exs", "Makefile", "README*"],
-      contributers: ["ElectricFeel", "Freza"],
+      contributers: ["Hilary Cheng", "ElectricFeel", "Freza"],
       licenses: ["MIT"],
-      links: %{"Github" => "https://github.com/electricFeel/savory"} 
+      links: %{"Github" => "https://github.com/hilarycheng/savory"} 
     ]
   end
 
