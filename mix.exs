@@ -1,4 +1,14 @@
-Code.ensure_loaded?(Hex) and Hex.start
+# Code.ensure_loaded?(Hex) and Hex.start
+defmodule Mix.Tasks.Compile.Savory do
+
+  def run(_) do
+    IO.puts "Compiling salt_nif.c"
+    if Mix.shell.cmd("make") != 0 do
+      raise Mix.Error, message: "error running make"
+    end
+  end
+
+end
 
 defmodule Savory.Mixfile do
   use Mix.Project
@@ -8,6 +18,7 @@ defmodule Savory.Mixfile do
      version: "0.0.3",
      elixir: "~> 1.2",
      deps: deps,
+     compilers: [ :savory, :elixir, :app ],
      aliases: aliases,
      description: description,
      package: package,
@@ -24,15 +35,16 @@ defmodule Savory.Mixfile do
   end
 
   defp aliases do
-    [compile: ["compile", &run_make/1]]
+    #    [compile: ["compile", &run_make/1]]
+    []
   end
 
-  defp run_make(_) do
-    IO.puts "Compiling salt_nif.c"
-    if Mix.shell.cmd("make") != 0 do
-      raise Mix.Error, message: "error running make"
-    end
-  end
+  # defp run_make(_) do
+  #   IO.puts "Compiling salt_nif.c"
+  #   if Mix.shell.cmd("make") != 0 do
+  #     raise Mix.Error, message: "error running make"
+  #   end
+  # end
 
   defp description do
     """
